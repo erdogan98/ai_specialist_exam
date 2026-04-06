@@ -1,7 +1,9 @@
 ### Detailed Explanation of my solution
 ```markdown
-Upon analyzing the task, my objective was to solve this problem with a deterministic,
-production ready evaluation pipeline capable of handling real world linguistic nuances at scale.
+The task is a conversational reply evaluation problem where a reply must be evaluated across three independent quality dimensions: clarity, cohesiveness, and grammar, and return a Pass/Fail classification.
+I approached this as an LLM-as-a-judge evaluation system with structured outputs to ensure accuracy, consistency, and adaptability across conversational styles.
+To ensure consistent JSON formatting and avoid parsing errors, I used schema-enforced structured outputs. This guarantees valid JSON and consistent fields, which is important for production pipelines.
+
 Determinism is enforced by setting temperature=0.0, ensuring consistent, reproducible outputs across runs.
 All cases are submitted in a single API call to minimize latency and cost, which scales efficiently for batch evaluation.
 While the task requested a flat Pass/Fail JSON, my pipeline produces the enriched output first and can trivially transform it into the requested format as a final step.
