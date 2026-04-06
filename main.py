@@ -86,7 +86,6 @@ for content_block in message.content:
 if eval_results:
     print("\n--- Simplified Output (Task Format with Dynamic Thresholding) ---")
 
-    # FIX: The threshold logic is now in Python, decoupling it from the LLM prompt exactly as explanation.md claims.
     THRESHOLD = 0.5
 
     for eval_item in eval_results["evaluations"]:
