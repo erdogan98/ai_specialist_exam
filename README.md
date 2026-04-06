@@ -27,7 +27,7 @@ source venv/bin/activate
 ### 2. Install Dependencies
 
 ```bash
-pip install anthropic
+pip install -r requirements.txt
 ```
 
 ### 3. Configuration
