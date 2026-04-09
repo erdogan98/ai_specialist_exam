@@ -82,12 +82,15 @@ for content_block in message.content:
         eval_results = content_block.input
         print("--- Raw API Output (Model Scores, Model Judgments & Reasoning) ---")
         print(json.dumps(eval_results, indent=2))
+        with open("raw_output.json", "w") as f:
+            f.write(json.dumps(eval_results, indent=2))
 
 if eval_results:
     print("\n--- Simplified Output (Task Format with Dynamic Thresholding) ---")
 
     THRESHOLD = 0.5
 
+    simple_outputs=[]
     for eval_item in eval_results["evaluations"]:
         simple_output = {
             "Clarity": "Pass" if eval_item["clarity_score"] > THRESHOLD else "Fail",
@@ -96,3 +99,10 @@ if eval_results:
         }
         print(f"\n{eval_item['case_id']}:")
         print(json.dumps(simple_output, indent=2))
+        simple_outputs.append({
+            "case_id": eval_item["case_id"],
+            **simple_output
+        })
+    # write once
+    with open("simple_output.json", "w") as f:
+        json.dump(simple_outputs, f, indent=2)
