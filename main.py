@@ -40,7 +40,7 @@ evaluator_tool = {
 }
 
 # 2. System Prompt: Strictly rules and definitions. NO DATA.
-system_prompt = """You are an expert AI system evaluator assessing conversational replies.
+system_prompt = """You are an expert Linguistic Analysis Engine system evaluator assessing conversational replies.
 Your task is to evaluate the reply based on the message provided.
 
 Definitions:
